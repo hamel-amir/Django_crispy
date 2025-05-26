@@ -36,7 +36,7 @@ class ContactForm(ModelForm):
         super().__init__(*args, **kwargs) # appeler le constructeur de base
         self.helper = FormHelper() # controle et personnalise le rendu du formulaire <form>
         self.helper.form_show_required = False # pour desactiver les asterisques
-        self.helper.form_action='contact'
+        self.helper.form_action='contact'   # c'est le name qui se trouve dans le path de URl
         self.helper.layout = Layout(
             Row(
                 Column('nom',css_class='form-group col-md-12 mb-0'),
