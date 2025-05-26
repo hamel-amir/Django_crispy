@@ -7,9 +7,9 @@ from django.http import HttpResponse
 def contact_view(request):
     form = ContactForm() # on crée un instance form de la classe ContactForm
     if request.method == 'POST':
-        form = ContactForm(request.POST)
+        form = ContactForm(request.POST) 
         if form.is_valid():
-            form.save()
+            form.save() # save le model dans la BDD
             return redirect('success')
     return render(request, 'contact.html', {'form': form})
 
