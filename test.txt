@@ -1,1 +1,2 @@
-le branche main est une branche principal 
+la branche amir est destiné au développeur amir pour se concentrer sur ses taches
+donc est ce qu'on fait le merge ou pas
