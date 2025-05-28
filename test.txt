@@ -1,2 +1,4 @@
 la branche amir est destiné au développeur amir pour se concentrer sur ses taches
 donc est ce qu'on fait le merge ou pas
+
+donc voila on essaie de faire un exemple de : three way merge
