@@ -1,16 +1,10 @@
 from django import forms
 from django.forms import ModelForm
-from crispy_forms.layout import Layout, Row, Column, Submit
+from crispy_forms.layout import Layout, Row, Column, Submit, HTML
 from .models import Contact
 from crispy_forms.helper import FormHelper
 
-from django import forms
-from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Row, Column, Submit
-from django.forms import ModelForm
-from .models import Contact  # adapte le chemin selon ton projet
-
-class ContactForm(ModelForm):
+class ContactForm(ModelForm): # pour le relier a un model django (dans notre cas modele contact).
     CHOIX_CONTACT = [
         (1, 'Email'),
         (0, 'Téléphone'),
@@ -35,12 +29,15 @@ class ContactForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs) # appeler le constructeur de base
         self.helper = FormHelper() # controle et personnalise le rendu du formulaire <form>
-        self.helper.form_show_required = False # pour desactiver les asterisques
+        self.helper.form_show_required = False # pour desactiver les asterisques (*)
+        self.helper.form_method = 'post'
         self.helper.form_action='contact'   # c'est le name qui se trouve dans le path de URl
         self.helper.layout = Layout(
             Row(
-                Column('nom',css_class='form-group col-md-12 mb-0'),
-                Column('email', css_class='form-group col-md-12 mb-0'),
+                Column('nom',css_class='form-group col-md-6 mb-0'),
+                Column('email',css_class='form-group col-md-6 mb-0'),
+                HTML('<span class="form-group col-md-6 mb-0"></span>'),
+                HTML('<span id="sp" class="form-group col-md-6 mb-0"></span>'),
             ),
             'choix_contact',  # nom correct du champ radio
             'message',
