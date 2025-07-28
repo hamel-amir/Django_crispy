@@ -5,11 +5,12 @@ from django.http import HttpResponse
 # Create your views here.
 
 def contact_view(request):
-    form = ContactForm() # on crée un instance form de la classe ContactForm
+    form = ContactForm() # on crée une instance form de la classe ContactForm
     if request.method == 'POST':
-        form = ContactForm(request.POST) 
-        if form.is_valid():
-            form.save() # save le model dans la BDD
+        print(request.POST['nom'])
+        form = ContactForm(request.POST) # on cree une nouvelle instance avec les donnes du formulaires envoyé par user sous forme de JSON (dictionnaire)
+        if form.is_valid():# verification de la validite de tous les champs du formulaire
+            form.save() # save les donnees dans la BDD automatiquement.
             return redirect('success')
     return render(request, 'contact.html', {'form': form})
 
